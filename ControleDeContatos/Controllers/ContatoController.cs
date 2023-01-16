@@ -8,5 +8,20 @@ namespace ControleDeContatos.Controllers
         {
             return View();
         }
+
+        public IActionResult CriarContato()
+        {
+            return View();
+        }
+
+        public IActionResult EditarContato()
+        {
+            return View();
+        }
+
+        public IActionResult ApagarContatoConfirmacao()
+        {
+            return View();
+        }
     }
 }

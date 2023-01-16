@@ -16,6 +16,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Cpu/Documents/LUAN/MVC/ControleDeContatos/ControleDeContatos/Views/Contato/ApagarContatoConfirmacao.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGF0b1xBcGFnYXJDb250YXRvQ29uZmlybWFjYW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Cpu/Documents/LUAN/MVC/ControleDeContatos/ControleDeContatos/Views/Contato/CriarContato.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGF0b1xDcmlhckNvbnRhdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Cpu/Documents/LUAN/MVC/ControleDeContatos/ControleDeContatos/Views/Contato/EditarContato.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGF0b1xFZGl0YXJDb250YXRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Cpu/Documents/LUAN/MVC/ControleDeContatos/ControleDeContatos/Views/Contato/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGF0b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
