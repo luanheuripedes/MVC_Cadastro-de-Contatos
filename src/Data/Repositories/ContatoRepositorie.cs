@@ -26,16 +26,25 @@ namespace Data.Repositories
             await _bancoContext.SaveChangesAsync();
         }
 
-        public async Task ApagarAsync(int id)
+        public async Task<bool> ApagarAsync(int id)
         {
-            var contato = await BuscarPorIdAsync(id);
-            if (contato == null)
+            try
             {
-                throw new Exception("Houve um erro na deleção do contato!");
-            }
+                var contato = await BuscarPorIdAsync(id);
+                if (contato == null)
+                {
+                    throw new Exception("Houve um erro na deleção do contato!");
+                }
 
-            _bancoContext.Contatos.Remove(contato);
-            await _bancoContext.SaveChangesAsync();
+                _bancoContext.Contatos.Remove(contato);
+                await _bancoContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                return false;
+            }
 
         }
 

@@ -74,37 +74,89 @@ namespace ControleDeContatos.Controllers
         [HttpPost]
         public async Task<IActionResult> CriarContato(ContatoModel contato)
         {
-            var contatoEntite = new ContatoEntitie()
+            try
             {
-                Nome = contato.Nome,
-                Celular= contato.Celular,
-                Email= contato.Email,
-            };
-            await _contatoRepositorie.AdicionarAsync(contatoEntite);
-            return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    var contatoEntite = new ContatoEntitie()
+                    {
+                        Nome = contato.Nome,
+                        Celular = contato.Celular,
+                        Email = contato.Email,
+                    };
+                    await _contatoRepositorie.AdicionarAsync(contatoEntite);
+
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
+
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (Exception e)
+            {
+
+                TempData["MensagemErro"] = $"Error ao cadastrar! Tente novamente! Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index");
+            }
             
         }
 
         [HttpPost]
         public async Task<IActionResult> EditarContato(ContatoModel contato)
         {
-            var contatoEntite = new ContatoEntitie()
+            try
             {
-                Id = contato.Id,
-                Nome = contato.Nome,
-                Celular = contato.Celular,
-                Email = contato.Email,
-            };
-            await _contatoRepositorie.AtualizarAsync(contatoEntite);
-            return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    var contatoEntite = new ContatoEntitie()
+                    {
+                        Id = contato.Id,
+                        Nome = contato.Nome,
+                        Celular = contato.Celular,
+                        Email = contato.Email,
+                    };
+                    await _contatoRepositorie.AtualizarAsync(contatoEntite);
+
+                    TempData["MensagemSucesso"] = "Contato atualizado com sucesso!";
+
+                    return RedirectToAction("Index");
+                }
+
+                return View("EditarContato", contato);
+            }
+            catch (Exception e)
+            {
+
+                TempData["MensagemErro"] = $"Error ao atualizar! Tente novamente! Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index");
+            }
+            
 
         }
 
         public async Task<IActionResult> ApagarContatoConfirmacao(int id)
         {
+            try
+            {
+                bool apagado = await _contatoRepositorie.ApagarAsync(id);
 
-             await _contatoRepositorie.ApagarAsync(id);
-            return RedirectToAction("Index");
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Contato removido com sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Ops, não conseguimos apagar seu contato!";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu contato! {e.Message}";
+                return RedirectToAction("Index");
+            }
+             
         }
     }
 }
