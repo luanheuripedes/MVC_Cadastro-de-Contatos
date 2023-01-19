@@ -42,14 +42,32 @@ namespace ControleDeContatos.Controllers
             return View();
         }
 
-        public IActionResult EditarContato()
+        public async Task<IActionResult> EditarContato(int id)
         {
-            return View();
+            var contato = await _contatoRepositorie.BuscarPorIdAsync(id);
+
+            var contatoModel = new ContatoModel()
+            {
+                Id = contato.Id,
+                Nome = contato.Nome,
+                Celular = contato.Celular,
+                Email = contato.Email
+            };
+            return View(contatoModel);
         }
 
-        public IActionResult ApagarContatoConfirmacao()
+        public async Task<IActionResult> ApagarContato(int id)
         {
-            return View();
+            var contato = await _contatoRepositorie.BuscarPorIdAsync(id);
+
+            var contatoModel = new ContatoModel()
+            {
+                Id = contato.Id,
+                Nome = contato.Nome,
+                Celular = contato.Celular,
+                Email = contato.Email
+            };
+            return View(contatoModel);
         }
 
         //post
@@ -65,6 +83,28 @@ namespace ControleDeContatos.Controllers
             await _contatoRepositorie.AdicionarAsync(contatoEntite);
             return RedirectToAction("Index");
             
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditarContato(ContatoModel contato)
+        {
+            var contatoEntite = new ContatoEntitie()
+            {
+                Id = contato.Id,
+                Nome = contato.Nome,
+                Celular = contato.Celular,
+                Email = contato.Email,
+            };
+            await _contatoRepositorie.AtualizarAsync(contatoEntite);
+            return RedirectToAction("Index");
+
+        }
+
+        public async Task<IActionResult> ApagarContatoConfirmacao(int id)
+        {
+
+             await _contatoRepositorie.ApagarAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

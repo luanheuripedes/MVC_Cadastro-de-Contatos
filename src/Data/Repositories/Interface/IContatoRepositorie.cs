@@ -11,5 +11,8 @@ namespace Data.Repositories.Interface
     {
         Task AdicionarAsync(ContatoEntitie contato);
         Task<List<ContatoEntitie>> BuscarTodosAsync();
+        Task<ContatoEntitie> BuscarPorIdAsync(int id);
+        Task AtualizarAsync(ContatoEntitie contatoEntite);
+        Task ApagarAsync(int id);
     }
 }
