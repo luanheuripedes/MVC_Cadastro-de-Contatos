@@ -17,6 +17,7 @@ namespace ControleDeContatos.Configuration
             //Injeção Repositories
             builder.Services.AddScoped<IContatoRepositorie, ContatoRepositorie>();
 
+
             return builder;
         }
     }
