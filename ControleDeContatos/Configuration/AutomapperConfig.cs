@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ControleDeContatos.Entities;
+using Data.Entities;
 using ControleDeContatos.Models;
 
 namespace ControleDeContatos.Configuration

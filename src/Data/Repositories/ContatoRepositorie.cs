@@ -1,4 +1,4 @@
-﻿using ControleDeContatos.Entities;
+﻿using Data.Entities;
 using Data.Context;
 using Data.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;

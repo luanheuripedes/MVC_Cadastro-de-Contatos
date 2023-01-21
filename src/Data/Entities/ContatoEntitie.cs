@@ -1,4 +1,4 @@
-﻿namespace ControleDeContatos.Entities
+﻿namespace Data.Entities
 {
     public class ContatoEntitie
     {

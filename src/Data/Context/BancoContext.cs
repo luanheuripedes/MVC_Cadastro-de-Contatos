@@ -1,5 +1,5 @@
 ﻿
-using ControleDeContatos.Entities;
+using Data.Entities;
 using Data.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +26,7 @@ namespace Data.Context
         }
 
         public virtual DbSet<ContatoEntitie> Contatos { get; set; }
+        public virtual DbSet<UsuarioEntitie> Usuarios { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -40,6 +41,7 @@ namespace Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ContatoConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
         }
     }
 }

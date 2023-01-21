@@ -1,5 +1,6 @@
-﻿using ControleDeContatos.Entities;
+﻿using AutoMapper;
 using ControleDeContatos.Models;
+using Data.Entities;
 using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,32 +9,22 @@ namespace ControleDeContatos.Controllers
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorie _contatoRepositorie;
+        private readonly IMapper _mapper;
 
-        public ContatoController(IContatoRepositorie contatoRepositorie)
+        public ContatoController(IContatoRepositorie contatoRepositorie, IMapper mapper)
         {
             _contatoRepositorie = contatoRepositorie;
+            _mapper = mapper;
         }
 
         //Metodos por natureza GET AO CARREGAR A TELA
         public async Task<IActionResult> Index()
         {
             var contatosEntitie = await _contatoRepositorie.BuscarTodosAsync();
-            var contatos = new List<ContatoModel>();
 
-            if (contatosEntitie.Count > 0)
-            {
-                
-                foreach (var item in contatosEntitie)
-                {
-                    contatos.Add(new ContatoModel()
-                    {
-                        Id = item.Id,
-                        Nome = item.Nome,
-                        Celular= item.Celular,
-                        Email = item.Email
-                    });
-                }
-            }
+            var contatos = _mapper.Map<ContatoModel>(contatosEntitie);
+
+            
             return View(contatos);
         }
 
@@ -46,27 +37,16 @@ namespace ControleDeContatos.Controllers
         {
             var contato = await _contatoRepositorie.BuscarPorIdAsync(id);
 
-            var contatoModel = new ContatoModel()
-            {
-                Id = contato.Id,
-                Nome = contato.Nome,
-                Celular = contato.Celular,
-                Email = contato.Email
-            };
+            var contatoModel = _mapper.Map<ContatoModel>(contato);
+
             return View(contatoModel);
         }
 
         public async Task<IActionResult> ApagarContato(int id)
         {
             var contato = await _contatoRepositorie.BuscarPorIdAsync(id);
-
-            var contatoModel = new ContatoModel()
-            {
-                Id = contato.Id,
-                Nome = contato.Nome,
-                Celular = contato.Celular,
-                Email = contato.Email
-            };
+            var contatoModel = _mapper.Map<ContatoModel>(contato);
+            
             return View(contatoModel);
         }
 
@@ -78,12 +58,8 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var contatoEntite = new ContatoEntitie()
-                    {
-                        Nome = contato.Nome,
-                        Celular = contato.Celular,
-                        Email = contato.Email,
-                    };
+                    var contatoEntite = _mapper.Map<ContatoEntitie>(contato);
+                    
                     await _contatoRepositorie.AdicionarAsync(contatoEntite);
 
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
@@ -109,13 +85,8 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var contatoEntite = new ContatoEntitie()
-                    {
-                        Id = contato.Id,
-                        Nome = contato.Nome,
-                        Celular = contato.Celular,
-                        Email = contato.Email,
-                    };
+                    var contatoEntite = _mapper.Map<ContatoEntitie>(contato);
+                    
                     await _contatoRepositorie.AtualizarAsync(contatoEntite);
 
                     TempData["MensagemSucesso"] = "Contato atualizado com sucesso!";

@@ -363,3 +363,5 @@ C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ControleDeContatos.pdb
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ControleDeContatos.genruntimeconfig.cache
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ref\ControleDeContatos.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
