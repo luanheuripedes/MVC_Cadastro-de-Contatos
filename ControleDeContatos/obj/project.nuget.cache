@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kVOtbH/e1k07n90RHH/9/ZU6w67nK++mjEWcWrIRbPuBkmQK/aaaXeny7rpn6L4jBsXh70gqFlylmqrj95vKAQ==",
+  "dgSpecHash": "Glj/YFo7zJN+hoY7tea5JArAwfuDvyZ/bKkgS6ZtXZeqeI6y2MQP1YMKjmn9lBH5NF1N0nrwzJOrIG5t94D7wg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\ControleDeContatos\\ControleDeContatos.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Cpu\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Cpu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.13\\microsoft.aspnetcore.mvc.razor.extensions.6.0.13.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\6.0.13\\microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.13.nupkg.sha512",
@@ -12,6 +14,7 @@
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.0\\microsoft.codeanalysis.common.4.0.0.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.0\\microsoft.codeanalysis.csharp.4.0.0.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.codeanalysis.razor\\6.0.13\\microsoft.codeanalysis.razor.6.0.13.nupkg.sha512",
+    "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.13\\microsoft.entityframeworkcore.6.0.13.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.13\\microsoft.entityframeworkcore.abstractions.6.0.13.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.13\\microsoft.entityframeworkcore.analyzers.6.0.13.nupkg.sha512",

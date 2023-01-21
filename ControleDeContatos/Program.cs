@@ -1,3 +1,4 @@
+using ControleDeContatos.Configuration;
 using Data.Context;
 using Data.Repositories;
 using Data.Repositories.Interface;
@@ -7,14 +8,16 @@ using Microsoft.Extensions.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("ContatoConnectionString");
-builder.Services.AddDbContext<BancoContext>(options => options.UseMySql(connectionString,
-                                                             ServerVersion.AutoDetect(connectionString)));
-builder.Services.AddScoped<IContatoRepositorie, ContatoRepositorie>();
+#region InjeçãoDependencia
+builder.ResolveDependencies();
+#endregion
+
+#region AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+#endregion
 
 var app = builder.Build();
 
