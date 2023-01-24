@@ -22,7 +22,7 @@ namespace ControleDeContatos.Controllers
         {
             var contatosEntitie = await _contatoRepositorie.BuscarTodosAsync();
 
-            var contatos = _mapper.Map<ContatoModel>(contatosEntitie);
+            var contatos = _mapper.Map<List<ContatoModel>>(contatosEntitie);
 
             
             return View(contatos);
