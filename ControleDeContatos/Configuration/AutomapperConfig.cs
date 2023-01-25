@@ -9,6 +9,7 @@ namespace ControleDeContatos.Configuration
         public AutomapperConfig()
         {
             CreateMap<ContatoModel, UsuarioEntitie>().ReverseMap();
+            CreateMap<UsuarioModel, UsuarioEntitie>().ReverseMap();
         }
     }
 }
