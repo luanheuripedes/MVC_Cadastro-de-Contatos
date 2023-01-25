@@ -58,7 +58,7 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var contatoEntite = _mapper.Map<UsuarioEntitie>(contato);
+                    var contatoEntite = _mapper.Map<ContatoEntitie>(contato);
                     
                     await _contatoRepositorie.AdicionarAsync(contatoEntite);
 
@@ -85,7 +85,7 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var contatoEntite = _mapper.Map<UsuarioEntitie>(contato);
+                    var contatoEntite = _mapper.Map<ContatoEntitie>(contato);
                     
                     await _contatoRepositorie.AtualizarAsync(contatoEntite);
 

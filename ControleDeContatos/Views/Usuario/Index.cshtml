@@ -7,7 +7,7 @@
 
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="CriarContato">Adicionar novo usuario</a>
+        <a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="CriarUsuario">Adicionar novo usuario</a>
     </div>
     <br />
 
@@ -29,11 +29,11 @@
 
 
 
-    <h1 class="display-4">Listagem de Usuarios</h1>
+    <h1 class="display-4">Listagem de usuários</h1>
 
-    <table class="table" id="table-usuarios" style="width:100%">
+    <table id="table-usuarios" class="display" style="width:100%">
         <thead >
-            <tr>
+            <tr class="odd">
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Login</th>
@@ -64,9 +64,7 @@
             }
             else
             {
-                <tr class="odd">
-                    <td valign="top" colspan="5"> Nenhum usuario encontrado</td>
-                </tr>
+                
             }
         </tbody>
     </table>

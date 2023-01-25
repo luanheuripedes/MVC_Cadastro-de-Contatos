@@ -25,7 +25,7 @@ namespace Data.Context
             _configuration = configuration;
         }
 
-        public virtual DbSet<UsuarioEntitie> Contatos { get; set; }
+        public virtual DbSet<ContatoEntitie> Contatos { get; set; }
         public virtual DbSet<UsuarioEntitie> Usuarios { get; set; }
 
 
