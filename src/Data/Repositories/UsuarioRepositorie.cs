@@ -22,6 +22,7 @@ namespace Data.Repositories
 
         public async Task AdicionarAsync(UsuarioEntitie entite)
         {
+            entite.DataCadastro = DateTime.UtcNow;
             await _bancoContext.Usuarios.AddAsync(entite);
             await _bancoContext.SaveChangesAsync();
         }
@@ -60,8 +61,9 @@ namespace Data.Repositories
             usuario.Nome = entitie.Nome;
             usuario.Login = entitie.Login;
             usuario.Email = entitie.Email;
-            usuario.Perfil = entitie.Perfil;
             usuario.Senha = entitie.Senha;
+            usuario.Perfil = entitie.Perfil;
+            usuario.DataAtualizacao = DateTime.Now;
 
              _bancoContext.Usuarios.Update(usuario);
             await _bancoContext.SaveChangesAsync();
