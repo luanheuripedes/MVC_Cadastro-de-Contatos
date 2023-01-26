@@ -26,6 +26,7 @@ namespace ControleDeContatos.Configuration
             //Services
             builder.Services.AddScoped<IContatoService, ContatoService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+            builder.Services.AddScoped<ILoginService, LoginService>();
 
 
             return builder;

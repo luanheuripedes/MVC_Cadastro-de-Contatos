@@ -14,11 +14,16 @@ namespace Data.Repositories
 {
     public class UsuarioRepositorie : BaseRepositorie<Usuario>, IUsuarioRepositorie
     {
-
-        public UsuarioRepositorie(BancoContext bancoContext):base(bancoContext)
+        private readonly BancoContext _context;
+        public UsuarioRepositorie(BancoContext bancoContext) : base(bancoContext)
         {
-            
+            _context = bancoContext;
         }
 
+        public async Task<Usuario> BuscarPorLoginSenha(string login, string senha)
+        {
+            return await _context.Usuarios.AsNoTracking()
+                .FirstOrDefaultAsync(predicate: x => x.Login == login && x.Senha == senha);
+        }
     }
 }

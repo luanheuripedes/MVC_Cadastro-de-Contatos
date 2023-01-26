@@ -3,6 +3,7 @@ using Data.Entities;
 using Services.DTO;
 using ControleDeContatos.Models.Contato;
 using ControleDeContatos.Models.Usuario;
+using ControleDeContatos.Models.Login;
 
 namespace ControleDeContatos.Configuration
 {
@@ -14,7 +15,9 @@ namespace ControleDeContatos.Configuration
             CreateMap<UsuarioDTO, Usuario>().ReverseMap();
             CreateMap<UsuarioDTO, EditarUsuarioModel>().ReverseMap();
 
+            CreateMap<LoginModel, LoginDTO>().ReverseMap();
 
+            CreateMap<Usuario, LoginDTO>().ReverseMap();
 
 
             CreateMap<ContatoDTO, ContatoModel>().ReverseMap();
