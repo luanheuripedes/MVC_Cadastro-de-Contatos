@@ -336,8 +336,6 @@ C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Data.dll
-C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Data.pdb
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ControleDeContatos.csproj.AssemblyReference.cache
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ControleDeContatos.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ControleDeContatos.AssemblyInfoInputs.cache
@@ -365,3 +363,7 @@ C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ref\ControleDeContatos.dll
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Domain.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Domain.pdb
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Infrastructure.pdb
