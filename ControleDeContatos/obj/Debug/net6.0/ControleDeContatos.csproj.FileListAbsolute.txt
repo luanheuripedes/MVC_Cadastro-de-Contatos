@@ -367,3 +367,5 @@ C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Domain.pdb
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Infrastructure.dll
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Infrastructure.pdb
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Services.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Services.pdb

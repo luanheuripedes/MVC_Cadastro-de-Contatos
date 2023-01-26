@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Data.Configuration
 {
-    public class UsuarioConfiguration : IEntityTypeConfiguration<UsuarioEntitie>
+    public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
     {
       
 
-        public void Configure(EntityTypeBuilder<UsuarioEntitie> builder)
+        public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.ToTable("usuario");
             builder.HasKey(x => x.Id).HasName("id");

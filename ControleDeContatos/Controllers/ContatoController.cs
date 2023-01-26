@@ -3,28 +3,30 @@ using ControleDeContatos.Models;
 using Data.Entities;
 using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Services.DTO;
+using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Controllers
 {
     public class ContatoController : Controller
     {
-        private readonly IContatoRepositorie _contatoRepositorie;
+        private readonly IContatoService _contatoService;
         private readonly IMapper _mapper;
 
-        public ContatoController(IContatoRepositorie contatoRepositorie, IMapper mapper)
+        public ContatoController(IContatoService contatoService, IMapper mapper)
         {
-            _contatoRepositorie = contatoRepositorie;
+            _contatoService = contatoService;
             _mapper = mapper;
         }
+
+
 
         //Metodos por natureza GET AO CARREGAR A TELA
         public async Task<IActionResult> Index()
         {
-            var contatosEntitie = await _contatoRepositorie.BuscarTodosAsync();
+            var contatosDTO = await _contatoService.GetAllAsync();
+            var contatos = _mapper.Map<List<ContatoModel>>(contatosDTO);
 
-            var contatos = _mapper.Map<List<ContatoModel>>(contatosEntitie);
-
-            
             return View(contatos);
         }
 
@@ -33,18 +35,20 @@ namespace ControleDeContatos.Controllers
             return View();
         }
 
+        //View
         public async Task<IActionResult> EditarContato(int id)
         {
-            var contato = await _contatoRepositorie.BuscarPorIdAsync(id);
+            var contato = await _contatoService.GetAsync(id);
 
             var contatoModel = _mapper.Map<ContatoModel>(contato);
 
             return View(contatoModel);
         }
 
+        //View
         public async Task<IActionResult> ApagarContato(int id)
         {
-            var contato = await _contatoRepositorie.BuscarPorIdAsync(id);
+            var contato = await _contatoService.GetAsync(id);
             var contatoModel = _mapper.Map<ContatoModel>(contato);
             
             return View(contatoModel);
@@ -52,22 +56,22 @@ namespace ControleDeContatos.Controllers
 
         //post
         [HttpPost]
-        public async Task<IActionResult> CriarContato(ContatoModel contato)
+        public async Task<IActionResult> CriarContato(ContatoModel contatoModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var contatoEntite = _mapper.Map<ContatoEntitie>(contato);
+                    var contatoDTO= _mapper.Map<ContatoDTO>(contatoModel);
                     
-                    await _contatoRepositorie.AdicionarAsync(contatoEntite);
+                     await _contatoService.CreateAsync(contatoDTO);
 
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
 
                     return RedirectToAction("Index");
                 }
 
-                return View(contato);
+                return View(contatoModel);
             }
             catch (Exception e)
             {
@@ -79,22 +83,22 @@ namespace ControleDeContatos.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarContato(ContatoModel contato)
+        public async Task<IActionResult> EditarContato(ContatoModel contatoModel)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var contatoEntite = _mapper.Map<ContatoEntitie>(contato);
+                    var contatoDTO = _mapper.Map<ContatoDTO>(contatoModel);
                     
-                    await _contatoRepositorie.AtualizarAsync(contatoEntite);
+                    await _contatoService.UpdateAsync(contatoDTO);
 
                     TempData["MensagemSucesso"] = "Contato atualizado com sucesso!";
 
                     return RedirectToAction("Index");
                 }
 
-                return View("EditarContato", contato);
+                return View("EditarContato", contatoModel);
             }
             catch (Exception e)
             {
@@ -110,7 +114,7 @@ namespace ControleDeContatos.Controllers
         {
             try
             {
-                bool apagado = await _contatoRepositorie.ApagarAsync(id);
+                var apagado = await _contatoService.RemoveAsync(id);
 
                 if (apagado)
                 {

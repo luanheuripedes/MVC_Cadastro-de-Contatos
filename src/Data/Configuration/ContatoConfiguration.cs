@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Configuration
 {
-    public class ContatoConfiguration : IEntityTypeConfiguration<ContatoEntitie>
+    public class ContatoConfiguration : IEntityTypeConfiguration<Contato>
     {
-        public void Configure(EntityTypeBuilder<ContatoEntitie> builder)
+        public void Configure(EntityTypeBuilder<Contato> builder)
         {
             builder.ToTable("contato");
             builder.HasKey(x => x.Id).HasName("id");

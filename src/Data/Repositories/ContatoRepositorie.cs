@@ -1,75 +1,21 @@
 ﻿using Data.Context;
 using Data.Entities;
 using Data.Repositories.Interface;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace Data.Repositories
 {
-    public class ContatoRepositorie : IContatoRepositorie
+    public class ContatoRepositorie : BaseRepositorie<Contato>, IContatoRepositorie
     {
-        private readonly BancoContext _bancoContext;
 
-        public ContatoRepositorie(BancoContext bancoContext)
+
+        public ContatoRepositorie(BancoContext context) : base(context)
         {
-            _bancoContext = bancoContext;
-        }
-
-        public async Task AdicionarAsync(ContatoEntitie contato)
-        {
-            await _bancoContext.Contatos.AddAsync(contato);
-            await _bancoContext.SaveChangesAsync();
-        }
-
-        public async Task<bool> ApagarAsync(int id)
-        {
-            try
-            {
-                var contato = await BuscarPorIdAsync(id);
-                if (contato == null)
-                {
-                    throw new Exception("Houve um erro na deleção do contato!");
-                }
-
-                _bancoContext.Contatos.Remove(contato);
-                await _bancoContext.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception e)
-            {
-
-                return false;
-            }
 
         }
 
-        public async Task AtualizarAsync(ContatoEntitie contatoEntite)
-        {
-            var contato = await BuscarPorIdAsync(contatoEntite.Id);
 
-            if(contato == null)
-            {
-                throw new Exception("Houve um erro na atualização do contato!");
-            }
-
-            contato.Nome = contatoEntite.Nome;
-            contato.Email = contatoEntite.Email;
-            contato.Celular = contatoEntite.Celular;
-
-             _bancoContext.Contatos.Update(contato);
-            await _bancoContext.SaveChangesAsync();
-
-
-        }
-
-        public async Task<ContatoEntitie> BuscarPorIdAsync(int id)
-        {
-            return await _bancoContext.Contatos.AsNoTracking().FirstOrDefaultAsync(x =>x.Id == id);
-        }
-
-        public async Task<List<ContatoEntitie>> BuscarTodosAsync()
-        {
-           return await _bancoContext.Contatos.AsNoTracking().ToListAsync();
-        }
     }
 }

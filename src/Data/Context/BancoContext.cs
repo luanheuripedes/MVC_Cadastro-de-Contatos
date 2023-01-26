@@ -25,8 +25,8 @@ namespace Data.Context
             _configuration = configuration;
         }
 
-        public virtual DbSet<ContatoEntitie> Contatos { get; set; }
-        public virtual DbSet<UsuarioEntitie> Usuarios { get; set; }
+        public virtual DbSet<Contato> Contatos { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

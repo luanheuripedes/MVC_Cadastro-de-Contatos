@@ -4,28 +4,30 @@ using Data.Entities;
 using Data.Repositories;
 using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Services.DTO;
+using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly IUsuarioRepositorie _usuarioRepositorie;
+        private readonly IUsuarioService _usuarioService;
         private readonly IMapper _mapper;
 
-        public UsuarioController(IUsuarioRepositorie usuarioRepositorie, IMapper mapper)
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
         {
-            _usuarioRepositorie = usuarioRepositorie;
+            _usuarioService = usuarioService;
             _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            var usuarioModel = await _usuarioRepositorie.BuscarTodosAsync();
+            var usuarioDTO = await _usuarioService.GetAllAsync();
 
-            var usuarios = _mapper.Map<List<UsuarioModel>>(usuarioModel);
+            var usuariosModel = _mapper.Map<List<UsuarioModel>>(usuarioDTO);
 
 
-            return View(usuarios);
+            return View(usuariosModel);
         }
 
         public IActionResult CriarUsuario()
@@ -40,9 +42,9 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var entitie = _mapper.Map<UsuarioEntitie>(model);
+                    var entitieDTO = _mapper.Map<UsuarioDTO>(model);
 
-                    await _usuarioRepositorie.AdicionarAsync(entitie);
+                    await _usuarioService.CreateAsync(entitieDTO);
 
                     TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso!";
 

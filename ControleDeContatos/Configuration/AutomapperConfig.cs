@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Data.Entities;
 using ControleDeContatos.Models;
+using Services.DTO;
 
 namespace ControleDeContatos.Configuration
 {
@@ -8,8 +9,14 @@ namespace ControleDeContatos.Configuration
     {
         public AutomapperConfig()
         {
-            CreateMap<ContatoModel, ContatoEntitie>().ReverseMap();
-            CreateMap<UsuarioModel, UsuarioEntitie>().ReverseMap();
+            CreateMap<UsuarioModel, UsuarioDTO>().ReverseMap();
+            CreateMap<UsuarioDTO, Usuario>().ReverseMap();
+
+
+
+
+            CreateMap<ContatoDTO, ContatoModel>().ReverseMap();
+            CreateMap<ContatoDTO, Contato>().ReverseMap();
         }
     }
 }

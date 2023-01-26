@@ -2,6 +2,10 @@
 using Data.Repositories.Interface;
 using Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Repositories.Interface;
+using Infrastructure.Repositories;
+using Services.Servicies.Interfaces;
+using Services.Servicies;
 
 namespace ControleDeContatos.Configuration
 {
@@ -16,8 +20,12 @@ namespace ControleDeContatos.Configuration
 
             //Injeção Repositories
             builder.Services.AddScoped<IContatoRepositorie, ContatoRepositorie>();
-
             builder.Services.AddScoped<IUsuarioRepositorie, UsuarioRepositorie>();
+            
+
+            //Services
+            builder.Services.AddScoped<IContatoService, ContatoService>();
+            builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 
             return builder;

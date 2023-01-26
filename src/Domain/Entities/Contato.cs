@@ -1,8 +1,9 @@
-﻿namespace Data.Entities
+﻿using Domain.Entities;
+
+namespace Data.Entities
 {
-    public class ContatoEntitie
+    public class Contato:Base
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Celular { get; set; }

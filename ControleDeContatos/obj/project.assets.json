@@ -737,6 +737,21 @@
         "runtime": {
           "bin/placeholder/Infrastructure.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.0",
+          "Domain": "1.0.0",
+          "Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
@@ -1829,6 +1844,11 @@
       "type": "project",
       "path": "../src/Data/Infrastructure.csproj",
       "msbuildProject": "../src/Data/Infrastructure.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../src/Services/Services.csproj",
+      "msbuildProject": "../src/Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1838,7 +1858,8 @@
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 6.0.13",
       "Microsoft.EntityFrameworkCore >= 6.0.13",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.13",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.13"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.13",
+      "Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1870,6 +1891,9 @@
           "projectReferences": {
             "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Data\\Infrastructure.csproj": {
               "projectPath": "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Data\\Infrastructure.csproj"
+            },
+            "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Services\\Services.csproj"
             }
           }
         }
