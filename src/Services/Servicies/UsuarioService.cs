@@ -41,5 +41,52 @@ namespace Services.Servicies
 
             return usersDto;
         }
+
+        public async Task<UsuarioDTO> GetAsync(int id)
+        {
+            var entitieExiste = await _usuarioRepository.GetAsync(id);
+
+            if (entitieExiste == null)
+            {
+                throw new Exception("Não existe nenhum Usuario com o id Informado");
+            }
+
+            var entitieDTO = _mapper.Map<UsuarioDTO>(entitieExiste);
+
+            return entitieDTO;
+        }
+
+        public async Task<bool> RemoveAsync(int id)
+        {
+            var usuario = await _usuarioRepository.GetAsync(id);
+            if (usuario == null)
+            {
+                return false;
+            }
+
+            await _usuarioRepository.DeleteAsync(id);
+
+            return true;
+        }
+
+        public async Task<UsuarioDTO> UpdateAsync(UsuarioDTO usuarioDTO)
+        {
+            var usuario = await _usuarioRepository.GetAsync(usuarioDTO.Id);
+
+            if (usuario == null)
+            {
+                throw new Exception("Houve um erro na atualização do usuario!");
+            }
+
+            usuario.Nome = usuarioDTO.Nome;
+            usuario.Login = usuarioDTO.Login;
+            usuario.Email = usuarioDTO.Email;
+            usuario.Perfil = usuarioDTO.Perfil;
+            usuario.DataAtualizacao = DateTime.Now;
+
+            await _usuarioRepository.UpdateAsync(usuario);
+            
+            return _mapper.Map<UsuarioDTO>(usuario);
+        }
     }
 }

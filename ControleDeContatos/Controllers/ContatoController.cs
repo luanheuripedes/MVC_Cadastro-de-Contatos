@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ControleDeContatos.Models;
+using ControleDeContatos.Models.Contato;
 using Data.Entities;
 using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;

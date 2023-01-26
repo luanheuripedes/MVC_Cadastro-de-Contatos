@@ -11,10 +11,11 @@ namespace Services.Servicies.Interfaces
     {
         Task<List<UsuarioDTO>> GetAllAsync();
         Task<UsuarioDTO> CreateAsync(UsuarioDTO usuarioDTO);
+        Task<UsuarioDTO> GetAsync(int id);
 
-        //Task<UserDTO> UpdateAsync(UserDTO usuarioDTO);
-        //Task Remove(int id);
-        //Task<UserDTO> Get(int id);
-        
+        Task<UsuarioDTO> UpdateAsync(UsuarioDTO usuarioDTO);
+        Task<bool> RemoveAsync(int id);
+
+
     }
 }

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Data.Entities;
-using ControleDeContatos.Models;
 using Services.DTO;
+using ControleDeContatos.Models.Contato;
+using ControleDeContatos.Models.Usuario;
 
 namespace ControleDeContatos.Configuration
 {
@@ -11,6 +12,7 @@ namespace ControleDeContatos.Configuration
         {
             CreateMap<UsuarioModel, UsuarioDTO>().ReverseMap();
             CreateMap<UsuarioDTO, Usuario>().ReverseMap();
+            CreateMap<UsuarioDTO, EditarUsuarioModel>().ReverseMap();
 
 
 

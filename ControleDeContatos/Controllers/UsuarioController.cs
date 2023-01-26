@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using ControleDeContatos.Models;
+using ControleDeContatos.Models.Usuario;
 using Data.Entities;
 using Data.Repositories;
 using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
+using Services.Servicies;
 using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Controllers
@@ -35,6 +36,48 @@ namespace ControleDeContatos.Controllers
             return View();
         }
 
+        public async Task<IActionResult> EditarUsuario(int id)
+        {
+            var usuario = await _usuarioService.GetAsync(id);
+
+            var usuarioModel = _mapper.Map<EditarUsuarioModel>(usuario);
+
+            return View(usuarioModel);
+        }
+
+        public async Task<IActionResult> ApagarUsuario(int id)
+        {
+            var usuario = await _usuarioService.GetAsync(id);
+            var usuarioModel = _mapper.Map<UsuarioModel>(usuario);
+
+            return View(usuarioModel);
+        }
+
+
+        public async Task<IActionResult> ApagarUsuarioConfirmacao(int id)
+        {
+            try
+            {
+                var apagado = await _usuarioService.RemoveAsync(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Usuário removido com sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Ops, não conseguimos apagar seu usuário!";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu usuário! {e.Message}";
+                return RedirectToAction("Index");
+            }
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> CriarUsuario(UsuarioModel model)
         {
@@ -60,6 +103,32 @@ namespace ControleDeContatos.Controllers
                 return RedirectToAction("Index");
             }
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditarUsuario(EditarUsuarioModel usuarioEditarModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var usuarioDTO = _mapper.Map<UsuarioDTO>(usuarioEditarModel);
+
+                    await _usuarioService.UpdateAsync(usuarioDTO);
+
+                    TempData["MensagemSucesso"] = "Usuário atualizado com sucesso!";
+
+                    return RedirectToAction("Index");
+                }
+
+                return View("EditarUsuario", usuarioEditarModel);
+            }
+            catch (Exception e)
+            {
+
+                TempData["MensagemErro"] = $"Error ao atualizar! Tente novamente! Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index");
+            }
         }
     }
 }

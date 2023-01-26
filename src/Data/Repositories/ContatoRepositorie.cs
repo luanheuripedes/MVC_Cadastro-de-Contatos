@@ -2,7 +2,6 @@
 using Data.Entities;
 using Data.Repositories.Interface;
 using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace Data.Repositories

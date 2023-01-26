@@ -1,7 +1,7 @@
 ﻿using Data.Entities.Enuns;
 using System.ComponentModel.DataAnnotations;
 
-namespace ControleDeContatos.Models
+namespace ControleDeContatos.Models.Usuario
 {
     public class UsuarioModel
     {
@@ -17,7 +17,7 @@ namespace ControleDeContatos.Models
         [EmailAddress(ErrorMessage = "O e-mail informado não é válido!")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "O email precisa ser informado!")]
+        [Required(ErrorMessage = "O perfil precisa ser informado!")]
         public EnumPerfil Perfil { get; set; }
 
         [Required(ErrorMessage = "A senha precisa ser informada!")]
