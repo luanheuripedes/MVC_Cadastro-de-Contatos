@@ -6,6 +6,8 @@ using Infrastructure.Repositories.Interface;
 using Infrastructure.Repositories;
 using Services.Servicies.Interfaces;
 using Services.Servicies;
+using ControleDeContatos.Helper;
+using Microsoft.AspNetCore.Http;
 
 namespace ControleDeContatos.Configuration
 {
@@ -18,6 +20,20 @@ namespace ControleDeContatos.Configuration
             builder.Services.AddDbContext<BancoContext>(options => options.UseMySql(connectionString,
                                                                          ServerVersion.AutoDetect(connectionString)));
 
+            //INJETANDO A CLASSE HTTPcONTEXT
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //aDICIONADO A SESSAO
+            builder.Services.AddScoped<ISessao, Sessao>();
+
+            builder.Services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential= true;
+            });
+
+
+
             //Injeção Repositories
             builder.Services.AddScoped<IContatoRepositorie, ContatoRepositorie>();
             builder.Services.AddScoped<IUsuarioRepositorie, UsuarioRepositorie>();
@@ -27,6 +43,8 @@ namespace ControleDeContatos.Configuration
             builder.Services.AddScoped<IContatoService, ContatoService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddScoped<ILoginService, LoginService>();
+
+
 
 
             return builder;

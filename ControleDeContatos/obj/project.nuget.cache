@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9AW9yVUQpuVj3U/v9M/z6eQq3SHWPap899wghhT6O34uN+BNe0YvKt2BAEIQyP60cgOHoiT6/Yf0XAlIb2WNpw==",
+  "dgSpecHash": "LEYgwjp+HI7a/kasfNiMHXTTtD8TATR0nuRcsimhTL5EhL1fmSmQWx9bpOdx12sJyfhShU8M9nqmiUj2O7DRXA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\ControleDeContatos\\ControleDeContatos.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,7 @@
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
+    "C:\\Users\\Cpu\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Cpu\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",

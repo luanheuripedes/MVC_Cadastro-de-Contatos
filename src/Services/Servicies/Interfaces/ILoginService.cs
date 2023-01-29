@@ -9,6 +9,6 @@ namespace Services.Servicies.Interfaces
 {
     public interface ILoginService
     {
-        Task<LoginDTO> LoginAsync(LoginDTO loginDto);
+        Task<UsuarioDTO> LoginAsync(LoginDTO loginDto);
     }
 }

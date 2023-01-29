@@ -21,13 +21,13 @@ namespace Services.Servicies
             _mapper = mapeer;
         }
 
-        public async Task<LoginDTO> LoginAsync(LoginDTO loginDto)
+        public async Task<UsuarioDTO> LoginAsync(LoginDTO loginDto)
         {
             var user = await _usuarioRepositorie.BuscarPorLoginSenha(loginDto.Login, loginDto.Senha);
 
             if(user != null)
             {
-                return _mapper.Map<LoginDTO>(user);
+                return _mapper.Map<UsuarioDTO>(user);
             }
 
             return null;

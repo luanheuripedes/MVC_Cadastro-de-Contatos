@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using ControleDeContatos.Helper;
 using ControleDeContatos.Models.Contato;
 using ControleDeContatos.Models.Login;
+using ControleDeContatos.Models.Usuario;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
 using Services.Servicies.Interfaces;
@@ -10,17 +12,30 @@ namespace ControleDeContatos.Controllers
     public class LoginController : Controller
     {
         private readonly ILoginService _service;
+        private readonly ISessao _sessao;
         private readonly IMapper _mapper;
 
-        public LoginController(ILoginService service, IMapper mapper)
+        public LoginController(ILoginService service, IMapper mapper, ISessao sessao)
         {
             _service = service;
             _mapper = mapper;
+            _sessao = sessao;
         }
 
         public IActionResult Index()
         {
+            //se o usuario estiver logado, redirecionar para home
+            if(_sessao.BuscarSessaoDoUsuario() != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessaoDoUsuario();
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -32,12 +47,15 @@ namespace ControleDeContatos.Controllers
                 {
                     var loginDTO = _mapper.Map<LoginDTO>(loginModel);
 
-                    var loginResponse = await _service.LoginAsync(loginDTO);
+                    var usuarioResponseDTO = await _service.LoginAsync(loginDTO);
 
-                    if(loginResponse != null)
+                    var usuarioModel = _mapper.Map<UsuarioModel>(usuarioResponseDTO);
+
+                    if (usuarioModel != null)
                     {
-                        if (loginModel.Login == loginResponse.Login && loginModel.Senha == loginResponse.Senha)
+                        if (loginModel.Login == usuarioModel.Login && loginModel.Senha == usuarioModel.Senha)
                         {
+                            _sessao.CriarSessaoDoUsuario(usuarioModel);
                             return RedirectToAction("Index", "Home");
                         }
                     }
