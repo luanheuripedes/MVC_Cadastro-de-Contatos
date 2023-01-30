@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ControleDeContatos.Filters;
 using ControleDeContatos.Models.Contato;
 using Data.Entities;
 using Data.Repositories.Interface;
@@ -6,8 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
 using Services.Servicies.Interfaces;
 
+
 namespace ControleDeContatos.Controllers
 {
+    [PaginaParaUsuarioLogado]
     public class ContatoController : Controller
     {
         private readonly IContatoService _contatoService;

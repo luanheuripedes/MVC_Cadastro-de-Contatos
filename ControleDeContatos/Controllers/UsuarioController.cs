@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ControleDeContatos.Filters;
 using ControleDeContatos.Models.Usuario;
 using Data.Entities;
 using Data.Repositories;
@@ -10,6 +11,7 @@ using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Controllers
 {
+    [PaginaRestritaSomenteAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioService _usuarioService;
