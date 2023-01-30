@@ -26,6 +26,7 @@ namespace Services.Servicies
         {
             usuarioDTO.DataCadastro = DateTime.Now;
 
+
             var entitie = _mapper.Map<Usuario>(usuarioDTO);
 
             var obj = await _usuarioRepository.CreateAsync(entitie);

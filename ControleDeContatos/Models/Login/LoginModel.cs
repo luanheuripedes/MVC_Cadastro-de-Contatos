@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ControleDeContatos.Helper;
+using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeContatos.Models.Login
 {
@@ -9,5 +10,10 @@ namespace ControleDeContatos.Models.Login
 
         [Required(ErrorMessage = "Informe a senha do usuário", AllowEmptyStrings = false)]
         public string Senha { get; set; }
+
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
     }
 }

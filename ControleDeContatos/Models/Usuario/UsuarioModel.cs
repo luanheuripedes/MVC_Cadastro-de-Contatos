@@ -1,4 +1,5 @@
-﻿using Data.Entities.Enuns;
+﻿using ControleDeContatos.Helper;
+using Data.Entities.Enuns;
 using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeContatos.Models.Usuario
@@ -28,6 +29,11 @@ namespace ControleDeContatos.Models.Usuario
         public bool SenhaValida(string senha)
         {
             return Senha == senha;
+        }
+
+        public void SetSenhaHash()
+        {
+            Senha = Senha.GerarHash();
         }
     }
 }

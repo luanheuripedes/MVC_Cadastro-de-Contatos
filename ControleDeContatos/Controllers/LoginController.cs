@@ -45,6 +45,7 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    loginModel.SetSenhaHash();
                     var loginDTO = _mapper.Map<LoginDTO>(loginModel);
 
                     var usuarioResponseDTO = await _service.LoginAsync(loginDTO);

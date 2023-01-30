@@ -87,6 +87,7 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    model.SetSenhaHash();
                     var entitieDTO = _mapper.Map<UsuarioDTO>(model);
 
                     await _usuarioService.CreateAsync(entitieDTO);
