@@ -32,11 +32,18 @@ namespace ControleDeContatos.Controllers
             return View();
         }
 
+        public IActionResult RedefinirSenha()
+        {
+            return View();
+        }
+
         public IActionResult Sair()
         {
             _sessao.RemoverSessaoDoUsuario();
             return RedirectToAction("Index", "Login");
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> Entrar(LoginModel loginModel)
@@ -74,5 +81,42 @@ namespace ControleDeContatos.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EnviarLinkParaRedefinirSenha(RedefinirSenhaModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var redefinirSenhaDTO = _mapper.Map<RedefinirSenhaDTO>(model);
+
+                    var usuarioResponseDTO = await _service.BuscarPorEmailLoginAsync(redefinirSenhaDTO.Login, redefinirSenhaDTO.Email);
+
+                    var usuarioModel = _mapper.Map<UsuarioModel>(usuarioResponseDTO);
+
+                    if (usuarioModel != null)
+                    {
+                        string novaSenha = usuarioModel.GerarNovaSenha();
+
+                        //Aqui vou atualizar a senha
+                        TempData["MensagemSucesso"] = $"Enviamos para seu email cadastrado uma nova senha.";
+                        return RedirectToAction("Index", "Login");
+                    }
+
+                    TempData["MensagemErro"] = $"Não conseguimos redefinir sua senha. Por favor, tente novamente.";
+
+                }
+
+                return View("RedefinirSenha");
+            }
+            catch (Exception e)
+            {
+
+                TempData["MensagemErro"] = $"Error, não conseguimos redefinir sua senha! Tente novamente! Detalhe do erro: {e.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+        
     }
 }

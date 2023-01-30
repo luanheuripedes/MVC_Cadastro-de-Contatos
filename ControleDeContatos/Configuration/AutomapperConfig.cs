@@ -22,6 +22,12 @@ namespace ControleDeContatos.Configuration
 
             CreateMap<ContatoDTO, ContatoModel>().ReverseMap();
             CreateMap<ContatoDTO, Contato>().ReverseMap();
+
+            CreateMap<RedefinirSenhaModel, RedefinirSenhaDTO>().ReverseMap();
+
+            CreateMap<Usuario, RedefinirSenhaDTO>().ReverseMap();
+
+            CreateMap<UsuarioModel, RedefinirSenhaDTO>().ReverseMap();
         }
     }
 }

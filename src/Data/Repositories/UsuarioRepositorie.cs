@@ -20,6 +20,12 @@ namespace Data.Repositories
             _context = bancoContext;
         }
 
+        public async Task<Usuario> BuscarPorEmailLoginAsync(string login, string email)
+        {
+            return await _context.Usuarios.AsNoTracking()
+                .FirstOrDefaultAsync(predicate: x => x.Login == login && x.Email == email);
+        }
+
         public async Task<Usuario> BuscarPorLoginSenha(string login, string senha)
         {
             return await _context.Usuarios.AsNoTracking()

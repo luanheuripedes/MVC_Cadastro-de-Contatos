@@ -21,6 +21,15 @@ namespace Services.Servicies
             _mapper = mapeer;
         }
 
+        public async Task<RedefinirSenhaDTO> BuscarPorEmailLoginAsync(string login, string email)
+        {
+            var usuario = await _usuarioRepositorie.BuscarPorEmailLoginAsync(login, email);
+
+            var resultDTO = _mapper.Map<RedefinirSenhaDTO>(usuario);
+
+            return resultDTO;
+        }
+
         public async Task<UsuarioDTO> LoginAsync(LoginDTO loginDto)
         {
             var user = await _usuarioRepositorie.BuscarPorLoginSenha(loginDto.Login, loginDto.Senha);
