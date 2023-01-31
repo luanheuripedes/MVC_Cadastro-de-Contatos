@@ -1,4 +1,4 @@
-﻿using ControleDeContatos.Helper;
+﻿using ControleDeContatos.Helper.Criptografia;
 using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeContatos.Models.Login

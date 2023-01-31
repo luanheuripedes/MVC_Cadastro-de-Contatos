@@ -1,4 +1,4 @@
-﻿using ControleDeContatos.Helper;
+﻿using ControleDeContatos.Helper.Criptografia;
 using Data.Entities.Enuns;
 using System.ComponentModel.DataAnnotations;
 

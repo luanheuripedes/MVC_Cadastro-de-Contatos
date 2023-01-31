@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
-namespace ControleDeContatos.Helper
+namespace ControleDeContatos.Helper.Session
 {
     public class Sessao : ISessao
     {
@@ -36,7 +36,7 @@ namespace ControleDeContatos.Helper
             return JsonConvert.DeserializeObject<UsuarioModel>(sessaoUsuario);
         }
 
-       
+
 
         public void RemoverSessaoDoUsuario()
         {

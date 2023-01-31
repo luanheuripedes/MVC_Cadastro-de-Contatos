@@ -6,8 +6,8 @@ using Infrastructure.Repositories.Interface;
 using Infrastructure.Repositories;
 using Services.Servicies.Interfaces;
 using Services.Servicies;
-using ControleDeContatos.Helper;
 using Microsoft.AspNetCore.Http;
+using ControleDeContatos.Helper.Session;
 
 namespace ControleDeContatos.Configuration
 {

@@ -26,4 +26,8 @@
     <ProjectReference Include="..\src\Services\Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helper\Email\" />
+  </ItemGroup>
+
 </Project>
