@@ -21,11 +21,11 @@ namespace Services.Servicies
             _mapper = mapeer;
         }
 
-        public async Task<RedefinirSenhaDTO> BuscarPorEmailLoginAsync(string login, string email)
+        public async Task<UsuarioDTO> BuscarPorEmailLoginAsync(string login, string email)
         {
             var usuario = await _usuarioRepositorie.BuscarPorEmailLoginAsync(login, email);
 
-            var resultDTO = _mapper.Map<RedefinirSenhaDTO>(usuario);
+            var resultDTO = _mapper.Map<UsuarioDTO>(usuario);
 
             return resultDTO;
         }

@@ -83,6 +83,7 @@ namespace Services.Servicies
             usuario.Login = usuarioDTO.Login;
             usuario.Email = usuarioDTO.Email;
             usuario.Perfil = usuarioDTO.Perfil;
+            usuario.Senha = usuarioDTO.Senha;
             usuario.DataAtualizacao = DateTime.Now;
 
             await _usuarioRepository.UpdateAsync(usuario);

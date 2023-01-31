@@ -8,6 +8,7 @@ using Services.Servicies.Interfaces;
 using Services.Servicies;
 using Microsoft.AspNetCore.Http;
 using ControleDeContatos.Helper.Session;
+using ControleDeContatos.Helper.Email;
 
 namespace ControleDeContatos.Configuration
 {
@@ -43,6 +44,9 @@ namespace ControleDeContatos.Configuration
             builder.Services.AddScoped<IContatoService, ContatoService>();
             builder.Services.AddScoped<IUsuarioService, UsuarioService>();
             builder.Services.AddScoped<ILoginService, LoginService>();
+
+            //Injetado o serviço de email
+            builder.Services.AddScoped<IEmail, Email>();
 
 
 

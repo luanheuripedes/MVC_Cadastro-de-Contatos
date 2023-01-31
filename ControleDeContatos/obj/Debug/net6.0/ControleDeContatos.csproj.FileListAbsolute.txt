@@ -371,3 +371,6 @@ C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\ref\ControleDeContatos.dll
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutDeslogado.cshtml.rz.scp.css
 C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\MailKit.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\MimeKit.dll
+C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos\bin\Debug\net6.0\BouncyCastle.Crypto.dll

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using ControleDeContatos.Helper;
+using ControleDeContatos.Helper.Email;
+using ControleDeContatos.Helper.Session;
 using ControleDeContatos.Models.Contato;
 using ControleDeContatos.Models.Login;
 using ControleDeContatos.Models.Usuario;
@@ -13,13 +14,17 @@ namespace ControleDeContatos.Controllers
     {
         private readonly ILoginService _service;
         private readonly ISessao _sessao;
+        private readonly IEmail _email;
+        private readonly IUsuarioService _serviceUsuario;
         private readonly IMapper _mapper;
 
-        public LoginController(ILoginService service, IMapper mapper, ISessao sessao)
+        public LoginController(ILoginService service, IMapper mapper, ISessao sessao, IEmail email, IUsuarioService serviceUsuario)
         {
             _service = service;
             _mapper = mapper;
             _sessao = sessao;
+            _email = email;
+            _serviceUsuario = serviceUsuario;
         }
 
         public IActionResult Index()
@@ -52,7 +57,7 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    loginModel.SetSenhaHash();
+                    //loginModel.SetSenhaHash();
                     var loginDTO = _mapper.Map<LoginDTO>(loginModel);
 
                     var usuarioResponseDTO = await _service.LoginAsync(loginDTO);
@@ -89,19 +94,34 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var redefinirSenhaDTO = _mapper.Map<RedefinirSenhaDTO>(model);
-
-                    var usuarioResponseDTO = await _service.BuscarPorEmailLoginAsync(redefinirSenhaDTO.Login, redefinirSenhaDTO.Email);
+                    var usuarioResponseDTO = await _service.BuscarPorEmailLoginAsync(model.Login, model.Email);
 
                     var usuarioModel = _mapper.Map<UsuarioModel>(usuarioResponseDTO);
+                    
 
                     if (usuarioModel != null)
                     {
-                        string novaSenha = usuarioModel.GerarNovaSenha();
+                        var senha = usuarioModel.GerarNovaSenha(); 
+                        
+
+                        // envio o email
+                        string mensagem = $"Sua nova senha é: {senha}";
+                        var emailEnviado = await _email.Enviar(usuarioModel.Email, "Sistema de Contatos - Nova Senha", mensagem);
 
                         //Aqui vou atualizar a senha
-                        //Fazer
-                        TempData["MensagemSucesso"] = $"Enviamos para seu email cadastrado uma nova senha.";
+                        if (emailEnviado)
+                        {
+                            //usuarioModel.SetSenhaHash();
+                            usuarioModel.Senha = senha;
+                            var usuarioDTO = _mapper.Map<UsuarioDTO>(usuarioModel);
+                            await _serviceUsuario.UpdateAsync(usuarioDTO);
+                            TempData["MensagemSucesso"] = $"Enviamos para seu email cadastrado uma nova senha.";
+                        }
+                        else
+                        {
+                            TempData["MensagemErro"] = $"Não conseguimos enviar o email. Por favor, tente novamente.";
+                        }
+                        
                         return RedirectToAction("Index", "Login");
                     }
 
