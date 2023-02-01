@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Cpu\Documents\LUAN\MVC\ControleDeContatos\ControleDeContatos
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Cpu/Documents/LUAN/MVC/ControleDeContatos/ControleDeContatos/Views/AlterarSenha/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWx0ZXJhclNlbmhhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Cpu/Documents/LUAN/MVC/ControleDeContatos/ControleDeContatos/Views/Contato/ApagarContato.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGF0b1xBcGFnYXJDb250YXRvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

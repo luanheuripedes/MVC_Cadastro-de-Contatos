@@ -22,6 +22,34 @@ namespace Services.Servicies
             _mapper = mapper;
         }
 
+        public async Task<UsuarioDTO> AlterarSenhaAsync(AlterarSenhaDTO alterarSenha)
+        {
+
+            var usuarioDB = await _usuarioRepository.GetAsync(alterarSenha.Id);
+
+            if (usuarioDB == null)
+            {
+                throw new Exception("Houve um erro na atualização da senha, usuário não encontrado!");
+            }
+
+            //if (usuarioDB.Senha == alterarSenha.SenhaAtual)
+            //{
+            //    throw new Exception("Senha Atual não confere!");
+            //}
+
+            if (usuarioDB.Senha == alterarSenha.NovaSenha)
+            {
+                throw new Exception("Nova Senha deve ser diferente da senha atual");
+            }
+
+            usuarioDB.Senha = alterarSenha.NovaSenha;
+
+            await _usuarioRepository.UpdateAsync(usuarioDB);
+
+            return _mapper.Map<UsuarioDTO>(usuarioDB);
+
+        }
+
         public async Task<UsuarioDTO> CreateAsync(UsuarioDTO usuarioDTO)
         {
             usuarioDTO.DataCadastro = DateTime.Now;
@@ -87,7 +115,7 @@ namespace Services.Servicies
             usuario.DataAtualizacao = DateTime.Now;
 
             await _usuarioRepository.UpdateAsync(usuario);
-            
+
             return _mapper.Map<UsuarioDTO>(usuario);
         }
     }

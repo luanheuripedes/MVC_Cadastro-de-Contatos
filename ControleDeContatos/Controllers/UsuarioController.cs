@@ -87,14 +87,14 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    model.SetSenhaHash();
+                    //model.SetSenhaHash();
                     var entitieDTO = _mapper.Map<UsuarioDTO>(model);
 
                     await _usuarioService.CreateAsync(entitieDTO);
 
                     TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso!";
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Home");
                 }
 
                 return View(model);
@@ -103,7 +103,7 @@ namespace ControleDeContatos.Controllers
             {
 
                 TempData["MensagemErro"] = $"Error ao cadastrar! Tente novamente! Detalhe do erro: {e.Message}";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
         }

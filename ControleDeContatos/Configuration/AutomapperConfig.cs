@@ -4,6 +4,7 @@ using Services.DTO;
 using ControleDeContatos.Models.Contato;
 using ControleDeContatos.Models.Usuario;
 using ControleDeContatos.Models.Login;
+using ControleDeContatos.Models.Alterar;
 
 namespace ControleDeContatos.Configuration
 {
@@ -28,6 +29,8 @@ namespace ControleDeContatos.Configuration
             CreateMap<Usuario, RedefinirSenhaDTO>().ReverseMap();
 
             CreateMap<UsuarioModel, RedefinirSenhaDTO>().ReverseMap();
+
+            CreateMap<AlterarSenhaDTO, AlterarSenhaModel>().ReverseMap();
         }
     }
 }

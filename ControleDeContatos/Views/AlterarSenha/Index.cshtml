@@ -1,0 +1,56 @@
+﻿@using ControleDeContatos.Models.Alterar;
+@model AlterarSenhaModel
+@{
+    ViewData["Title"] = "Alterar senha do usuario";
+}
+<div class="text-center">
+
+    <h1 class="display-4">Alterar senha do usuario</h1>
+
+</div>
+
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+<form asp-controller="AlterarSenha" asp-action="AlterarSenhaUsuario" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group p-2">
+        <label for="senhaAtual">Senha Atual</label>
+        <input type="password" asp-for="SenhaAtual" class="form-control" placeholder="Digite a senha atual." id="senhaAtual">
+        @*@Html.ValidationMessageFor(x => x.Nome)*@
+        <span asp-validation-for="SenhaAtual" class="text-danger"></span>
+    </div>
+
+    <div class="form-group p-2">
+        <label for="novaSenha">Nova Senha</label>
+        <input type="password" asp-for="NovaSenha" class="form-control" placeholder="Digite a nova senha." id="novaSenha">
+        @*@Html.ValidationMessageFor(x => x.Nome)*@
+        <span asp-validation-for="NovaSenha" class="text-danger"></span>
+    </div>
+
+    <div class="form-group p-2">
+        <label for="confirmarSenha">Confirmar Nova Senha</label>
+        <input type="password" asp-for="ConfirmarNovaSenha" class="form-control" placeholder="Digite a confirmação da nova senha do usuario." id="confirmarSenha">
+        @*@Html.ValidationMessageFor(x => x.Nome)*@
+        <span asp-validation-for="ConfirmarNovaSenha" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary p-2 btn-block">Alterar</button>
+    <a class="btn btn-secondary p-2 btn-block" asp-controller="Home" asp-action="Index">Voltar</a>
+
+</form>

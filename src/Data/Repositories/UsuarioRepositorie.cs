@@ -20,6 +20,8 @@ namespace Data.Repositories
             _context = bancoContext;
         }
 
+        
+
         public async Task<Usuario> BuscarPorEmailLoginAsync(string login, string email)
         {
             return await _context.Usuarios.AsNoTracking()
