@@ -14,7 +14,10 @@ namespace Data.Repositories
             _context = bancoContext;
         }
 
-
+        public async override Task<List<Usuario>> GetAllAsync()
+        {
+            return await _context.Usuarios.Include(x => x.Contatos).ToListAsync();
+        }
 
         public async Task<Usuario> BuscarPorEmailLoginAsync(string login, string email)
         {

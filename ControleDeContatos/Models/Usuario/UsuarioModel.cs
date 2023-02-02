@@ -1,5 +1,6 @@
 ﻿using ControleDeContatos.Helper.Criptografia;
 using Data.Entities.Enuns;
+using Services.DTO;
 using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeContatos.Models.Usuario
@@ -25,6 +26,8 @@ namespace ControleDeContatos.Models.Usuario
         public string Senha { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
+        public virtual List<ContatoDTO> Contatos { get; set; }
+
 
         public bool SenhaValida(string senha)
         {

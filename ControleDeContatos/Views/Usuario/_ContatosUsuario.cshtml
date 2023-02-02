@@ -1,0 +1,38 @@
+﻿@using ControleDeContatos.Models.Contato; <!--//essa classe chama partiol-->
+
+@model List<ContatoModel>
+
+<table class="table" id="table-contatos-usuario" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Celular</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (ContatoModel item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Nome</td>
+                    <td>@item.Email</td>
+                    <td>@item.Celular</td>
+                </tr>
+            }
+        }
+       <!--
+        else
+        {
+            <tr class="odd">
+                <td valign="top" colspan="4">
+                    Nenhum contato encontrado
+                </td>
+            </tr>
+        }
+         -->
+    </tbody>
+</table>

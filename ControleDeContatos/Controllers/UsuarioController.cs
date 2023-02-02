@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using ControleDeContatos.Filters;
+using ControleDeContatos.Models.Contato;
 using ControleDeContatos.Models.Usuario;
+using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
 using Services.Servicies.Interfaces;
@@ -11,12 +13,14 @@ namespace ControleDeContatos.Controllers
     public class UsuarioController : Controller
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly IContatoService _contatoService;
         private readonly IMapper _mapper;
 
-        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper, IContatoService contatoService)
         {
             _usuarioService = usuarioService;
             _mapper = mapper;
+            _contatoService = contatoService;
         }
 
         public async Task<IActionResult> Index()
@@ -49,6 +53,14 @@ namespace ControleDeContatos.Controllers
             var usuarioModel = _mapper.Map<UsuarioModel>(usuario);
 
             return View(usuarioModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListarContatosPorUsuarioId(int id)
+        {
+            var contatos = await _contatoService.BuscarContatosPorUsuarioAsync(id);
+            var contatosModel = _mapper.Map<List<ContatoModel>>(contatos);
+            return PartialView("_ContatosUsuario", contatosModel);
         }
 
 
