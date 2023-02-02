@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace ControleDeContatos.ViewComponents
 {
-    public class Menu:ViewComponent
+    public class Menu : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

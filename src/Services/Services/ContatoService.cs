@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
-using Data.Context;
 using Data.Entities;
 using Data.Repositories.Interface;
 using Services.DTO;
 using Services.Servicies.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Servicies
 {

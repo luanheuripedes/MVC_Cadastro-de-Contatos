@@ -13,7 +13,7 @@ namespace ControleDeContatos.Models.Alterar
         public string NovaSenha { get; set; }
 
         [Required(ErrorMessage = "Confirme a nova senha")]
-        [Compare("NovaSenha",ErrorMessage = "Senha não confere com nova senha.")]
+        [Compare("NovaSenha", ErrorMessage = "Senha não confere com nova senha.")]
         public string ConfirmarNovaSenha { get; set; }
     }
 }

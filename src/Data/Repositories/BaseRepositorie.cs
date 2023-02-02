@@ -2,11 +2,6 @@
 using Domain.Entities;
 using Infrastructure.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -62,7 +57,7 @@ namespace Infrastructure.Repositories
             return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
-        
+
 
         public virtual async Task<T> GetAsync(int id)
         {

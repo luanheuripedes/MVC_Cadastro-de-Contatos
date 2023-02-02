@@ -32,9 +32,9 @@ namespace ControleDeContatos.Helper.Email
                     Text = mensagem
                 };
 
-                using(var client = new SmtpClient())
+                using (var client = new SmtpClient())
                 {
-                    await client.ConnectAsync(host,porta,true);
+                    await client.ConnectAsync(host, porta, true);
 
                     client.AuthenticationMechanisms.Remove("XOUATH2");
 
@@ -48,7 +48,7 @@ namespace ControleDeContatos.Helper.Email
 
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //gravar log de erro ao enviar e-mail
                 return false;

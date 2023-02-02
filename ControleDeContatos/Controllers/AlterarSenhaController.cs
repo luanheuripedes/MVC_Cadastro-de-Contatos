@@ -46,9 +46,9 @@ namespace ControleDeContatos.Controllers
                     //return View("Index", alterarSenhaModel);
                 }
 
-                return View("Index",alterarSenhaModel);
+                return View("Index", alterarSenhaModel);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 TempData["MensagemErro"] = $"Não conseguimos alterar sua senha. Por favor, tente novamente.";
                 return View("Index", alterarSenhaModel);

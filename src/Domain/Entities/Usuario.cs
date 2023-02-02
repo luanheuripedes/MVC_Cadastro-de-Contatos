@@ -1,14 +1,9 @@
 ﻿using Data.Entities.Enuns;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class Usuario: Base
+    public class Usuario : Base
     {
         public string Nome { get; set; }
         public string Login { get; set; }

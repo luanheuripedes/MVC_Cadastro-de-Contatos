@@ -1,9 +1,4 @@
 using ControleDeContatos.Configuration;
-using Data.Context;
-using Data.Repositories;
-using Data.Repositories.Interface;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

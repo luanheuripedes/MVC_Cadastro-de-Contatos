@@ -11,7 +11,7 @@ namespace Data.Repositories
 
         private readonly BancoContext _context;
 
-        public ContatoRepositorie(BancoContext context):base(context)
+        public ContatoRepositorie(BancoContext context) : base(context)
         {
             _context = context;
         }

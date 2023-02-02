@@ -1,18 +1,12 @@
 ﻿
-using Data.Entities;
 using Data.Configuration;
+using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Data.Context
 {
-    public class BancoContext:DbContext
+    public class BancoContext : DbContext
     {
         private readonly IConfiguration _configuration;
 

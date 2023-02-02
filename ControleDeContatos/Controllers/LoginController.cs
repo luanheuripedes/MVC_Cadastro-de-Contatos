@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ControleDeContatos.Helper.Email;
 using ControleDeContatos.Helper.Session;
-using ControleDeContatos.Models.Contato;
 using ControleDeContatos.Models.Login;
 using ControleDeContatos.Models.Usuario;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +29,7 @@ namespace ControleDeContatos.Controllers
         public IActionResult Index()
         {
             //se o usuario estiver logado, redirecionar para home
-            if(_sessao.BuscarSessaoDoUsuario() != null)
+            if (_sessao.BuscarSessaoDoUsuario() != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -74,7 +73,7 @@ namespace ControleDeContatos.Controllers
                     }
 
                     TempData["MensagemErro"] = $"Usuario e/ou senha inválido(s). Por favor, tente novamente.";
-                    
+
                 }
 
                 return View("Index");
@@ -97,12 +96,12 @@ namespace ControleDeContatos.Controllers
                     var usuarioResponseDTO = await _service.BuscarPorEmailLoginAsync(model.Login, model.Email);
 
                     var usuarioModel = _mapper.Map<UsuarioModel>(usuarioResponseDTO);
-                    
+
 
                     if (usuarioModel != null)
                     {
-                        var senha = usuarioModel.GerarNovaSenha(); 
-                        
+                        var senha = usuarioModel.GerarNovaSenha();
+
 
                         // envio o email
                         string mensagem = $"Sua nova senha é: {senha}";
@@ -121,7 +120,7 @@ namespace ControleDeContatos.Controllers
                         {
                             TempData["MensagemErro"] = $"Não conseguimos enviar o email. Por favor, tente novamente.";
                         }
-                        
+
                         return RedirectToAction("Index", "Login");
                     }
 
@@ -138,6 +137,6 @@ namespace ControleDeContatos.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
+
     }
 }

@@ -2,8 +2,6 @@
 using ControleDeContatos.Filters;
 using ControleDeContatos.Helper.Session;
 using ControleDeContatos.Models.Contato;
-using Data.Entities;
-using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
 using Services.Servicies.Interfaces;
@@ -30,7 +28,7 @@ namespace ControleDeContatos.Controllers
         //Metodos por natureza GET AO CARREGAR A TELA
         public async Task<IActionResult> Index()
         {
-            var usuarioLogado = _sessao.BuscarSessaoDoUsuario(); 
+            var usuarioLogado = _sessao.BuscarSessaoDoUsuario();
             var contatosDTO = await _contatoService.BuscarContatosPorUsuarioAsync(usuarioLogado.Id);
             var contatos = _mapper.Map<List<ContatoModel>>(contatosDTO);
 
@@ -57,7 +55,7 @@ namespace ControleDeContatos.Controllers
         {
             var contato = await _contatoService.GetAsync(id);
             var contatoModel = _mapper.Map<ContatoModel>(contato);
-            
+
             return View(contatoModel);
         }
 
@@ -71,9 +69,9 @@ namespace ControleDeContatos.Controllers
                 {
                     var usuarioLogado = _sessao.BuscarSessaoDoUsuario();
                     contatoModel.UsuarioId = usuarioLogado.Id;
-                    var contatoDTO= _mapper.Map<ContatoDTO>(contatoModel);
-                    
-                     await _contatoService.CreateAsync(contatoDTO);
+                    var contatoDTO = _mapper.Map<ContatoDTO>(contatoModel);
+
+                    await _contatoService.CreateAsync(contatoDTO);
 
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
 
@@ -88,7 +86,7 @@ namespace ControleDeContatos.Controllers
                 TempData["MensagemErro"] = $"Error ao cadastrar! Tente novamente! Detalhe do erro: {e.Message}";
                 return RedirectToAction("Index");
             }
-            
+
         }
 
         [HttpPost]
@@ -101,7 +99,7 @@ namespace ControleDeContatos.Controllers
                     var usuarioLogado = _sessao.BuscarSessaoDoUsuario();
                     contatoModel.UsuarioId = usuarioLogado.Id;
                     var contatoDTO = _mapper.Map<ContatoDTO>(contatoModel);
-                    
+
                     await _contatoService.UpdateAsync(contatoDTO);
 
                     TempData["MensagemSucesso"] = "Contato atualizado com sucesso!";
@@ -117,7 +115,7 @@ namespace ControleDeContatos.Controllers
                 TempData["MensagemErro"] = $"Error ao atualizar! Tente novamente! Detalhe do erro: {e.Message}";
                 return RedirectToAction("Index");
             }
-            
+
 
         }
 
@@ -142,7 +140,7 @@ namespace ControleDeContatos.Controllers
                 TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu contato! {e.Message}";
                 return RedirectToAction("Index");
             }
-             
+
         }
     }
 }

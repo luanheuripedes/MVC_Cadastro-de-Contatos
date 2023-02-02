@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using ControleDeContatos.Filters;
 using ControleDeContatos.Models.Usuario;
-using Data.Entities;
-using Data.Repositories;
-using Data.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
-using Services.Servicies;
 using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Controllers
@@ -94,7 +90,7 @@ namespace ControleDeContatos.Controllers
 
                     TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso!";
 
-                    return RedirectToAction("Index","Usuario");
+                    return RedirectToAction("Index", "Usuario");
                 }
 
                 return View(model);
@@ -103,7 +99,7 @@ namespace ControleDeContatos.Controllers
             {
 
                 TempData["MensagemErro"] = $"Error ao cadastrar! Tente novamente! Detalhe do erro: {e.Message}";
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
 
         }

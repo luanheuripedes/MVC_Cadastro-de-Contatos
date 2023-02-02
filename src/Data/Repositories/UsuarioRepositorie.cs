@@ -1,14 +1,8 @@
-﻿using Data.Entities;
-using Data.Context;
+﻿using Data.Context;
+using Data.Entities;
 using Data.Repositories.Interface;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.Repositories
 {
@@ -20,7 +14,7 @@ namespace Data.Repositories
             _context = bancoContext;
         }
 
-        
+
 
         public async Task<Usuario> BuscarPorEmailLoginAsync(string login, string email)
         {

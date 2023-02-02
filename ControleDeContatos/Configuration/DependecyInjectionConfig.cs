@@ -1,14 +1,11 @@
-﻿using Data.Context;
-using Data.Repositories.Interface;
-using Data.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Infrastructure.Repositories.Interface;
-using Infrastructure.Repositories;
-using Services.Servicies.Interfaces;
-using Services.Servicies;
-using Microsoft.AspNetCore.Http;
+﻿using ControleDeContatos.Helper.Email;
 using ControleDeContatos.Helper.Session;
-using ControleDeContatos.Helper.Email;
+using Data.Context;
+using Data.Repositories;
+using Data.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
+using Services.Servicies;
+using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Configuration
 {
@@ -30,7 +27,7 @@ namespace ControleDeContatos.Configuration
             builder.Services.AddSession(o =>
             {
                 o.Cookie.HttpOnly = true;
-                o.Cookie.IsEssential= true;
+                o.Cookie.IsEssential = true;
             });
 
 
@@ -38,7 +35,7 @@ namespace ControleDeContatos.Configuration
             //Injeção Repositories
             builder.Services.AddScoped<IContatoRepositorie, ContatoRepositorie>();
             builder.Services.AddScoped<IUsuarioRepositorie, UsuarioRepositorie>();
-            
+
 
             //Services
             builder.Services.AddScoped<IContatoService, ContatoService>();

@@ -1,6 +1,5 @@
 ﻿using ControleDeContatos.Models.Usuario;
 using Data.Entities.Enuns;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
@@ -26,7 +25,7 @@ namespace ControleDeContatos.Filters
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Login" }, { "action", "Index" } });
                 }
 
-                if(usuario.Perfil != EnumPerfil.Admin)
+                if (usuario.Perfil != EnumPerfil.Admin)
                 {
                     context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "Restrito" }, { "action", "Index" } });
                 }
