@@ -18,6 +18,15 @@ namespace Data.Configuration
             builder.Property(p => p.Nome).HasColumnType("VARCHAR(50)").HasColumnName("nome");
             builder.Property(p => p.Email).HasColumnType("VARCHAR(50)").HasColumnName("email");
             builder.Property(p => p.Celular).HasColumnType("VARCHAR(20)").HasColumnName("celular");
+
+            builder.Property(x => x.UsuarioId).
+                HasColumnType("INT")
+                .HasColumnName("id_usuario");
+
+
+            builder.HasOne(x => x.Usuario).WithMany(x => x.Contatos).HasForeignKey(x => x.UsuarioId);
+
+
         }
     }
 }

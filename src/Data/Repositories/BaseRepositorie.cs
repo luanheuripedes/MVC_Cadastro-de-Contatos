@@ -62,6 +62,8 @@ namespace Infrastructure.Repositories
             return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
+        
+
         public virtual async Task<T> GetAsync(int id)
         {
             return await _context.Set<T>().AsNoTracking().Where(predicate: x => x.Id == id).FirstOrDefaultAsync();

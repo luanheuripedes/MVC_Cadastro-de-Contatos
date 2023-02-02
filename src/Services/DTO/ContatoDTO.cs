@@ -19,5 +19,6 @@ namespace Services.DTO
 
 
         public string Celular { get; set; }
+        public int? UsuarioId { get; set; }
     }
 }

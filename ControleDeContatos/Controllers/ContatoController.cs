@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ControleDeContatos.Filters;
+using ControleDeContatos.Helper.Session;
 using ControleDeContatos.Models.Contato;
 using Data.Entities;
 using Data.Repositories.Interface;
@@ -15,11 +16,13 @@ namespace ControleDeContatos.Controllers
     {
         private readonly IContatoService _contatoService;
         private readonly IMapper _mapper;
+        private readonly ISessao _sessao;
 
-        public ContatoController(IContatoService contatoService, IMapper mapper)
+        public ContatoController(IContatoService contatoService, IMapper mapper, ISessao sessao)
         {
             _contatoService = contatoService;
             _mapper = mapper;
+            _sessao = sessao;
         }
 
 
@@ -27,7 +30,8 @@ namespace ControleDeContatos.Controllers
         //Metodos por natureza GET AO CARREGAR A TELA
         public async Task<IActionResult> Index()
         {
-            var contatosDTO = await _contatoService.GetAllAsync();
+            var usuarioLogado = _sessao.BuscarSessaoDoUsuario(); 
+            var contatosDTO = await _contatoService.BuscarContatosPorUsuarioAsync(usuarioLogado.Id);
             var contatos = _mapper.Map<List<ContatoModel>>(contatosDTO);
 
             return View(contatos);
@@ -65,6 +69,8 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                    contatoModel.UsuarioId = usuarioLogado.Id;
                     var contatoDTO= _mapper.Map<ContatoDTO>(contatoModel);
                     
                      await _contatoService.CreateAsync(contatoDTO);
@@ -92,6 +98,8 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var usuarioLogado = _sessao.BuscarSessaoDoUsuario();
+                    contatoModel.UsuarioId = usuarioLogado.Id;
                     var contatoDTO = _mapper.Map<ContatoDTO>(contatoModel);
                     
                     await _contatoService.UpdateAsync(contatoDTO);

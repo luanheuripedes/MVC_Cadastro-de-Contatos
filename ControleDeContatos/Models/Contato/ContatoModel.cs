@@ -4,7 +4,7 @@ namespace ControleDeContatos.Models.Contato
 {
     public class ContatoModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required(ErrorMessage = "O nome precisa ser informado!")]
         public string Nome { get; set; }
@@ -16,5 +16,7 @@ namespace ControleDeContatos.Models.Contato
         [Required(ErrorMessage = "O celular precisa ser informado!")]
         [Phone(ErrorMessage = "O celular informado não é valido"!)]
         public string Celular { get; set; }
+
+        public int? UsuarioId { get; set; }
     }
 }

@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Data.Migrations
+namespace Infrastructure.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20230130183425_Campo senha aumentado de 20 para 150 carateres")]
-    partial class Camposenhaaumentadode20para150carateres
+    [Migration("20230202001327_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,8 +42,14 @@ namespace Data.Migrations
                         .HasColumnType("VARCHAR(50)")
                         .HasColumnName("nome");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INT")
+                        .HasColumnName("id_usuario");
+
                     b.HasKey("Id")
                         .HasName("id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("contato", (string)null);
                 });
@@ -91,6 +97,22 @@ namespace Data.Migrations
                         .HasName("id");
 
                     b.ToTable("usuario", (string)null);
+                });
+
+            modelBuilder.Entity("Data.Entities.Contato", b =>
+                {
+                    b.HasOne("Data.Entities.Usuario", "Usuario")
+                        .WithMany("Contatos")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("Data.Entities.Usuario", b =>
+                {
+                    b.Navigation("Contatos");
                 });
 #pragma warning restore 612, 618
         }

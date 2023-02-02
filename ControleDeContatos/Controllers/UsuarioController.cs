@@ -94,7 +94,7 @@ namespace ControleDeContatos.Controllers
 
                     TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso!";
 
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index","Usuario");
                 }
 
                 return View(model);

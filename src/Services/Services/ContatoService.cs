@@ -23,6 +23,15 @@ namespace Services.Servicies
             _mapper = mapper;
         }
 
+        public async Task<List<ContatoDTO>> BuscarContatosPorUsuarioAsync(int id)
+        {
+            var allContatos = await _repositorie.BuscarContatosPorUsuarioAsync(id);
+
+            var contatosDTO = _mapper.Map<List<ContatoDTO>>(allContatos);
+
+            return contatosDTO;
+        }
+
         public async Task<ContatoDTO> CreateAsync(ContatoDTO contatoDTO)
         {
 

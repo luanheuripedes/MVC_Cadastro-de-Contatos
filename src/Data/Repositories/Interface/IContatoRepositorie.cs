@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Infrastructure.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,6 @@ namespace Data.Repositories.Interface
 {
     public interface IContatoRepositorie:IBaseRepositorie<Contato>
     {
-        //Task AdicionarAsync(Contato contato);
-        //Task<List<Contato>> BuscarTodosAsync();
-        //Task<Contato> BuscarPorIdAsync(int id);
-        //Task AtualizarAsync(Contato contatoEntite);
-        //Task<bool> ApagarAsync(int id);
+        Task<List<Contato>> BuscarContatosPorUsuarioAsync(int id);
     }
 }

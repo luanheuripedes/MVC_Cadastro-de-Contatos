@@ -24,6 +24,9 @@ namespace Data.Configuration
             builder.Property(p => p.Senha).HasColumnType("VARCHAR(150)").HasColumnName("senha");
             builder.Property(p => p.DataCadastro).HasColumnType("DATETIME").HasColumnName("data_cadastro");
             builder.Property(p => p.DataAtualizacao).HasColumnType("DATETIME").HasColumnName("data_atualizacao");
+
+            
+
         }
     }
 }
