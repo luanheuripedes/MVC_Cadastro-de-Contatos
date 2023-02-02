@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using ControleDeContatos.Filters;
-using ControleDeContatos.Helper.Session;
 using ControleDeContatos.Models.Contato;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
+using Services.Services.Sessao;
 using Services.Servicies.Interfaces;
 
 

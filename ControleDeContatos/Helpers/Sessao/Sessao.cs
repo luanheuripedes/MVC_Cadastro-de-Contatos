@@ -1,7 +1,7 @@
 ﻿using ControleDeContatos.Models.Usuario;
 using Newtonsoft.Json;
 
-namespace ControleDeContatos.Helper.Session
+namespace Services.Services.Sessao
 {
     public class Sessao : ISessao
     {

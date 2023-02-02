@@ -1,9 +1,8 @@
-﻿using ControleDeContatos.Helper.Email;
-using ControleDeContatos.Helper.Session;
-using Data.Context;
+﻿using ControleDeContatos.Helper.Email;using Data.Context;
 using Data.Repositories;
 using Data.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using Services.Services.Sessao;
 using Services.Servicies;
 using Services.Servicies.Interfaces;
 
@@ -11,8 +10,12 @@ namespace ControleDeContatos.Configuration
 {
     public static class DependecyInjectionConfig
     {
+        
         public static WebApplicationBuilder ResolveDependencies(this WebApplicationBuilder builder)
         {
+
+            
+
             // Add context Bd EF
             var connectionString = builder.Configuration.GetConnectionString("ContatoConnectionString");
             builder.Services.AddDbContext<BancoContext>(options => options.UseMySql(connectionString,
@@ -44,6 +47,9 @@ namespace ControleDeContatos.Configuration
 
             //Injetado o serviço de email
             builder.Services.AddScoped<IEmail, Email>();
+
+
+            
 
 
 

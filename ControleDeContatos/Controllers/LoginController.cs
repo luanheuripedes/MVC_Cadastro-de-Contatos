@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using ControleDeContatos.Helper.Email;
-using ControleDeContatos.Helper.Session;
 using ControleDeContatos.Models.Login;
 using ControleDeContatos.Models.Usuario;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTO;
+using Services.Services.Sessao;
 using Services.Servicies.Interfaces;
 
 namespace ControleDeContatos.Controllers

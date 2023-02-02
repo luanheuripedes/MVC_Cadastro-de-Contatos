@@ -812,6 +812,21 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
+      "Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MailKit": "3.5.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "MimeKit": "3.5.0"
+        },
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2086,6 +2101,11 @@
         "version.txt"
       ]
     },
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../src/Core/Core.csproj",
+      "msbuildProject": "../src/Core/Core.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../src/Domain/Domain.csproj",
@@ -2105,6 +2125,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
+      "Core >= 1.0.0",
       "Infrastructure >= 1.0.0",
       "MailKit >= 3.5.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 6.0.13",
@@ -2143,6 +2164,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Core\\Core.csproj"
+            },
             "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Data\\Infrastructure.csproj": {
               "projectPath": "C:\\Users\\Cpu\\Documents\\LUAN\\MVC\\ControleDeContatos\\src\\Data\\Infrastructure.csproj"
             },

@@ -1,6 +1,6 @@
 ﻿using ControleDeContatos.Models.Usuario;
 
-namespace ControleDeContatos.Helper.Session
+namespace Services.Services.Sessao
 {
     public interface ISessao
     {

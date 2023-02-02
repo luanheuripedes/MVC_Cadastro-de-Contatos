@@ -1,5 +1,7 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
+using System;
 
 namespace ControleDeContatos.Helper.Email
 {
@@ -17,11 +19,12 @@ namespace ControleDeContatos.Helper.Email
         {
             try
             {
-                string host = _configuration.GetValue<string>("EmailSettings:SmtpServer");
-                string nome = _configuration.GetValue<string>("EmailSettings:Name");
-                string userName = _configuration.GetValue<string>("EmailSettings:From");
-                string senha = _configuration.GetValue<string>("EmailSettings:Password");
-                var porta = _configuration.GetValue<int>("EmailSettings:Port");
+
+                var host = _configuration["EmailSettings:SmtpServer"];
+                var nome = _configuration["EmailSettings:Name"];
+                var userName = _configuration["EmailSettings:From"];
+                var senha = _configuration["EmailSettings:Password"];
+                Int32.TryParse(_configuration["EmailSettings:Port"], out int porta);
 
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress(nome, userName));

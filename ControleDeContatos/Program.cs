@@ -1,10 +1,12 @@
 using ControleDeContatos.Configuration;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 
 #region InjeçãoDependencia
 builder.ResolveDependencies();
@@ -13,6 +15,7 @@ builder.ResolveDependencies();
 #region AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 #endregion
+
 
 var app = builder.Build();
 
